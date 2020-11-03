@@ -1,4 +1,4 @@
-pbpTagCloud = pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
+pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 
 (function(nr, skryptSRC) {
 
