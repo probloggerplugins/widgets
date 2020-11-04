@@ -184,7 +184,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 			a.href = '/search/label/' + t.k;
 			a.textContent = t.k + (showCounter ? ' (' + t.i + ')' : '');
 			if (display === 'cloud') {
-				let proc = (ilMax - ilMin) > 0 ? (t.i - ilMin) / (ilMax - ilMin) : 30;
+				let proc = (ilMax - ilMin) > 0 ? 100 * (t.i - ilMin) / (ilMax - ilMin) : 30;
 				a.style.fontSize = (70 + proc) + '%';
 			}
 			div.appendChild(a);
