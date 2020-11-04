@@ -35,7 +35,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let showCounter = skrypt.getAttribute('showCounter') === 'false' ? false : true;
 	
-	textAlign = skrypt.getAttribute('textAlign');
+	let textAlign = skrypt.getAttribute('textAlign');
 	if (textAlign !== 'right' || textAlign !== 'center') textAlign = 'left';
 	
 	elem.style.textAlign = textAlign;
