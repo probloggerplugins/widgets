@@ -99,6 +99,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 			if (combining) {
 				let czek = document.createElement('input');
 				czek.type = 'checkbox';
+				czek.value = t.k;
 				czek.oninput = function() {
 					let zazny = elem.querySelectorAll('input[type="checkbox"]:checked');
 					if (zazny.length) {
