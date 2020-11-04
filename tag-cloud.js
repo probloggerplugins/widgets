@@ -21,7 +21,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let searchText = skrypt.getAttribute('searchText') ? skrypt.getAttribute('searchText') : 'Search';
 	
-	let sortByText = skrypt.getAttribute('sortByText') ? skrypt.getAttribute('sortByText') : 'Sort by:';
+	let sortText = skrypt.getAttribute('sortText') ? skrypt.getAttribute('sortText') : 'Sort:';
+	
+	let sortBy = skrypt.getAttribute('sortBy') === 'popularity' ? 'popularity' : 'alphabetically';
 	
 	let alphabeticallyText = skrypt.getAttribute('alphabeticallyText') ? skrypt.getAttribute('alphabeticallyText') : 'Alphabetically';
 	
@@ -33,12 +35,17 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let showCounter = skrypt.getAttribute('showCounter') === 'false' ? false : true;
 	
+	textAlign = skrypt.getAttribute('textAlign');
+	if (textAlign !== 'right' || textAlign !== 'center') textAlign = 'left';
+	
+	elem.style.textAlign = textAlign;
+	
 	if (sorter) {
 		let dv = document.createElement('div');
-		dv.style.textAlign = display === 'list' ? 'left' : 'center';
-		dv.innerHTML = '<span style="font-size:' + textSize + 'px;margin-right:6px;">' + sortByText + '</span>';
+		dv.style.textAlign = textAlign;
+		dv.innerHTML = '<span style="font-size:' + textSize + 'px;margin-right:6px;">' + sortText + '</span>';
 		let sel = document.createElement('select');
-		sel.innerHTML = '<option value="alphabetically">' + alphabeticallyText + '</option><option value="popularity">' +byPopularityText + '</option>';
+		sel.innerHTML = '<option value="alphabetically"' + (sortBy !== 'popularity' ? ' selected' : '') + '>' + alphabeticallyText + '</option><option value="popularity"' + (sortBy === 'popularity' ? ' selected' : '') + '>' +byPopularityText + '</option>';
 		sel.onchange = function() {
 			wyswietl(this.value, display);
 			if (combining) {
@@ -53,7 +60,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	if (combining) {
 		let dv = document.createElement('div');
-		dv.style.textAlign = display === 'list' ? 'left' : 'center';
+		dv.style.textAlign = textAlign;
 		var szukacz = document.createElement('span');
 		szukacz.setAttribute('class', 'pbpTC_searchButton unactive');
 		szukacz.innerHTML = searchText + ' (';
@@ -177,7 +184,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 
 	function gotowosc(e) {
-		wyswietl('alphabetically', 'inline')
+		wyswietl(sortBy, display);
 	}
 
 	zapyt(1, 150);
