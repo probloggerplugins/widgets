@@ -1,12 +1,53 @@
 pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 
 (function(nr, skryptSRC) {
-
 	let wszysTagi = [];
 	let posTagi = [];
 	let elem = document.createElement('div');
+	let znaki = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_-';
+	let d = 'pbpTC-';
+	while (d.length < 16) {
+		d += znaki[Math.floor(Math.random() * znaki.length)];
+	}
+	elem.id = d;
 	let skrypt = document.querySelectorAll(skryptSRC)[nr];
 	skrypt.parentNode.insertBefore(elem, skrypt);
+	
+	let textSize = Number(skrypt.getAttribute('textSize'));
+	if (textSize < 1 || isNaN(textSize)) textSize = 16;
+	
+	let display = skrypt.getAttribute('display');
+	if (display !== 'list' && display !== 'cloud') display = 'inline';
+	
+	let searchText = skrypt.getAttribute('searchText') ? skrypt.getAttribute('searchText') : 'Search'
+	
+	let combining = skrypt.getAttribute('combining') === 'false' ? false : true;
+	
+	let showCounter = skrypt.getAttribute('showCounter') === 'false' ? false : true;
+	
+	if (combining) {
+		let dv = document.createElement('div');
+		dv.style.textAlign = display === 'list' ? 'left' : 'center';
+		var szukacz = document.createElement('span');
+		szukacz.setAttribute('class', 'pbpTC_searchButton');
+		szukacz.innerHTML = searchText + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>';
+		var ileZnal = document.createElement('span');
+		szukacz.appendChild(ileZnal);
+		szukacz.onclick = function() {
+			if (!this.classList.contains('unactive')) {
+				let url = '/search/label/';
+				elem.querySelectorAll('input[type="checkbox"]:checked').forEach((lab, i) => {
+					url += (i > 0 ? '+' : '') + lab.value;
+				});
+				location.href = url;
+			}
+		}
+		skrypt.parentNode.insertBefore(dv, skrypt);
+	}
+	
+	let styl = document.createElement('style');
+	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;') : '' + '}';
+	document.head.appendChild(styl);
 
 	function lapWszystko(f) {
 		let wpisy = f.responseXML.getElementsByTagName('entry');
@@ -52,7 +93,38 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		}
 		wszysTagi.sort((a, b) => sort === 'popularity' ? b.i - a.i : a.k.localeCompare(b.k));
 		wszysTagi.forEach(t => {
-			elem.innerHTML += '<span class="">' + t.k + '</span>';
+			let div = document.createElement('div');
+			div.setAttribute('class', 'pbpLabel')
+			if (combining) {
+				let czek = document.createElement('input');
+				czek.type = 'checkbox';
+				czek.oninput = function() {
+					let zazny = elem.querySelectorAll('input[type="checkbox"]:checked');
+					if (zazny.length) {
+						szukacz.classList.remove('unactive');
+						let licznik = 0;
+						for (let i=0; i<posTagi.length; i++) {
+							let czy = true;
+							for (let j=0; j<zazny.length; j++) {
+								if (posTagi[i].indexOf(zazny[j].value) < 0) {
+									czy = false;
+									break;
+								}
+								if (czy) licznik++;
+							}
+						}
+						ileZnal.textContent = licznik;
+					} else {
+						szukacz.classList.add('unactive');
+					}
+				}
+				div.appendChild(czek);
+			}
+			let a = document.createElement(a);
+			a.href = '/search/label/' + t.k;
+			a.textContent = t.k + (showCounter ? ' (' + t.i + ')' : '');
+			div.appendChild(a);
+			elem.appendChild(div);
 		});
 	
 	}
