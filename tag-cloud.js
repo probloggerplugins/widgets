@@ -41,6 +41,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		sciezka.setAttribute('d', 'M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z');
 		svg.appendChild(sciezka);
 		szukacz.appendChild(svg);
+		let szukinfo = document.createElement('span');
+		szukinfo.setAttribute('class', 'searchInfo');
+		szukinfo.textContent = 'No selected labels to search';
 		szukacz.onclick = function() {
 			if (!this.classList.contains('unactive')) {
 				let url = '/search/label/';
@@ -55,8 +58,16 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '} .pbpTC_searchButton{display:inline-flex;align-items:center;font-size:' + textSize + 'px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;} .pbpTC_searchButton:not(.unactive):hover{background:#b2b2b2;border-color:#bcbcbc;} .pbpTC_searchButton:not(.unactive):active{border-style:inset;padding:5px 5px 1px 9px;} .pbpTC_searchButton.unactive {background:#818181;border:3px solid #818181;} .pbpTC_searchButton svg{height:' + textSize + 'px;margin-left:4px;}';
+	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '} .pbpTC_searchButton{display:inline-flex;align-items:center;position:relative;font-size:' + textSize + 'px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;} .pbpTC_searchButton:not(.unactive):hover{background:#b2b2b2;border-color:#bcbcbc;} .pbpTC_searchButton:not(.unactive):active{border-style:inset;padding:5px 5px 1px 9px;} .pbpTC_searchButton.unactive {background:#818181;border:3px solid #818181;cursor:default;} .pbpTC_searchButton .searchInfo{visibility:hidden;opacity:0;display:inline-block;position:absolute;bottom:calc(100% + 9px);left:calc(50% - 42px);background:#b1b1ff;color:black;border:1px solid #00009d;transition:opacity 1s;width:70px;border-radius:7px;padding:3px 7px 1px 7px;text-align:center;font-size:13px;font-weight:normal;line-height:1.2;} .pbpTC_searchButton:hover .searchInfo{visibility:visible;opacity:1;transition:opacity 1s;} .pbpTC_searchButton .searchInfo:hover{visibility:hidden;opacity:0;} .pbpTC_searchButton .searchInfo:after {content:'';display:inline-block;position:absolute;left:calc(50% - 6px);top:100%;border-width:6px;border-style:solid;border-color:transparent;border-top:6px solid #00009d;} .pbpTC_searchButton svg{height:' + textSize + 'px;margin-left:4px;}';
 	document.head.appendChild(styl);
+	
+	
+	.info {position:relative;}
+.info inf {visibility:hidden;opacity:0;display:inline-block;position:absolute;bottom:calc(100% + 9px);left:calc(50% - 42px);background:#b1b1ff;color:black;border:1px solid #00009d;transition:opacity 1s;width:70px;border-radius:7px;padding:3px 7px 1px 7px;text-align:center;font-size:13px;font-weight:normal;line-height:1.2;}
+.info:hover inf {visibility:visible;opacity:1;transition:opacity 1s;}
+.info inf:hover {visibility:hidden;opacity:0;}
+.info inf:after {content:'';display:inline-block;position:absolute;left:calc(50% - 6px);top:100%;border-width:6px;border-style:solid;border-color:transparent;border-top:6px solid #00009d;}
+	
 
 	function lapWszystko(f) {
 		let wpisy = f.responseXML.getElementsByTagName('entry');
