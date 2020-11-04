@@ -35,6 +35,10 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let showCounter = skrypt.getAttribute('showCounter') === 'false' ? false : true;
 	
+	let ilMin = 0;
+	let ilMax = 0;
+	
+	
 	let textAlign = skrypt.getAttribute('textAlign');
 	if (textAlign !== 'right' && textAlign !== 'center') textAlign = 'left';
 	
@@ -179,6 +183,10 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 			let a = document.createElement('a');
 			a.href = '/search/label/' + t.k;
 			a.textContent = t.k + (showCounter ? ' (' + t.i + ')' : '');
+			if (display === 'cloud') {
+				let proc = (ilMax - ilMin) > 0 ? (t.i - ilMin) / (ilMax - ilMin) : 30;
+				a.style.fontSize = (70 + proc) + '%';
+			}
 			div.appendChild(a);
 			elem.appendChild(div);
 		});
@@ -186,6 +194,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 
 	function gotowosc(e) {
+		wszysTagi.sort((a, b) => b.i - a.i);
+		ilMax = wszysTagi[0].i;
+		ilMin = wszysTagi[wszysTagi.length-1].i;
 		wyswietl(sortBy, display);
 	}
 
