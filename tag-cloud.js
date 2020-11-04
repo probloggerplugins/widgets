@@ -43,6 +43,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	if (sorter) {
 		let dv = document.createElement('div');
 		dv.style.textAlign = textAlign;
+		dv.style.marginBottom = '10px';
 		dv.innerHTML = '<span style="font-size:' + textSize + 'px;margin-right:6px;">' + sortText + '</span>';
 		let sel = document.createElement('select');
 		sel.innerHTML = '<option value="alphabetically"' + (sortBy !== 'popularity' ? ' selected' : '') + '>' + alphabeticallyText + '</option><option value="popularity"' + (sortBy === 'popularity' ? ' selected' : '') + '>' +byPopularityText + '</option>';
@@ -61,6 +62,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	if (combining) {
 		let dv = document.createElement('div');
 		dv.style.textAlign = textAlign;
+		dv.style.marginTop = '10px';
 		var szukacz = document.createElement('span');
 		szukacz.setAttribute('class', 'pbpTC_searchButton unactive');
 		szukacz.innerHTML = searchText + ' (';
