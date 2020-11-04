@@ -112,12 +112,13 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 									czy = false;
 									break;
 								}
-								if (czy) licznik++;
 							}
+							if (czy) licznik++;
 						}
 						ileZnal.textContent = licznik;
 					} else {
 						szukacz.classList.add('unactive');
+						ileZnal.textContent = '0';
 					}
 				}
 				div.appendChild(czek);
