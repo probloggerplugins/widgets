@@ -21,9 +21,35 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let searchText = skrypt.getAttribute('searchText') ? skrypt.getAttribute('searchText') : 'Search';
 	
+	let sortByText = skrypt.getAttribute('sortByText') ? skrypt.getAttribute('sortByText') : 'Sort by:';
+	
+	let alphabeticallyText = skrypt.getAttribute('alphabeticallyText') ? skrypt.getAttribute('alphabeticallyText') : 'Alphabetically';
+	
+	let byPopularityText = skrypt.getAttribute('byPopularityText') ? skrypt.getAttribute('byPopularityText') : 'By popularity';
+	
 	let combining = skrypt.getAttribute('combining') === 'false' ? false : true;
 	
+	let sorter = skrypt.getAttribute('sorter') === 'false' ? false : true;
+	
 	let showCounter = skrypt.getAttribute('showCounter') === 'false' ? false : true;
+	
+	if (sorter) {
+		let dv = document.createElement('div');
+		dv.style.textAlign = display === 'list' ? 'left' : 'center';
+		dv.innerHTML = '<span style="font-size:' + textSize + 'px;margin-right:6px;">' + sortByText + '</span>';
+		let sel = document.createElement('select');
+		sel.innerHTML = '<option value="alphabetically">' + alphabeticallyText + '</option><option value="popularity">' +byPopularityText + '</option>';
+		sel.onchange = function() {
+			wyswietl(this.value, display);
+			if (combining) {
+				szukacz.classList.add('unactive');
+				ileZnal.textContent = '0';
+				szukinfo.textContent = 'No selected labels to search';
+			}
+		}
+		dv.appendChild(sel);
+		elem.parentNode.insertBefore(dv, elem);
+	}
 	
 	if (combining) {
 		let dv = document.createElement('div');
