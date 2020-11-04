@@ -42,6 +42,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 				location.href = url;
 			}
 		}
+		dv.appendChild(szukacz);
 		skrypt.parentNode.insertBefore(dv, skrypt);
 	}
 	
