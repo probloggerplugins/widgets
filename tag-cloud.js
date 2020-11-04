@@ -120,7 +120,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 				}
 				div.appendChild(czek);
 			}
-			let a = document.createElement(a);
+			let a = document.createElement('a');
 			a.href = '/search/label/' + t.k;
 			a.textContent = t.k + (showCounter ? ' (' + t.i + ')' : '');
 			div.appendChild(a);
