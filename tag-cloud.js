@@ -47,7 +47,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '}';
+	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '} .pbpTC_searchButton svg{height:' + textSize + 'px;}';
 	document.head.appendChild(styl);
 
 	function lapWszystko(f) {
