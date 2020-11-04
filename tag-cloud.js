@@ -51,7 +51,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 				elem.querySelectorAll('input[type="checkbox"]:checked').forEach((lab, i) => {
 					url += (i > 0 ? '+' : '') + lab.value;
 				});
-				location.href = url;
+				location.href = encodeURIComponent(url);
 			}
 		}
 		dv.appendChild(szukacz);
