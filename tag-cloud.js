@@ -55,7 +55,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '} .pbpTC_searchButton{font-size:' + textSize + 'px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;} .pbpTC_searchButton:hover {} .pbpTC_searchButton svg{height:' + textSize + 'px;margin-left:4px;}';
+	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '} .pbpTC_searchButton{display:inline-flex;align-items:center;font-size:' + textSize + 'px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;} .pbpTC_searchButton:hover{background:#b2b2b2;border-color:#bcbcbc;} .pbpTC_searchButton:active{border-style:inset;padding:5px 5px 1px 9px;} .pbpTC_searchButton svg{height:' + textSize + 'px;margin-left:4px;}';
 	document.head.appendChild(styl);
 
 	function lapWszystko(f) {
