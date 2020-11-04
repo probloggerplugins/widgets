@@ -48,7 +48,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '} .pbpTC_searchButton svg{height:' + textSize + 'px;}';
+	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 5px;' + (display !== 'list' ? 'display:inline-block;' : '') + '} .pbpTC_searchButton{font-size:' + textSize + 'px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;} .pbpTC_searchButton:hover {} .pbpTC_searchButton svg{height:' + textSize + 'px;}';
 	document.head.appendChild(styl);
 
 	function lapWszystko(f) {
@@ -111,7 +111,6 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 							for (let j=0; j<zazny.length; j++) {
 								if (posTagi[i].indexOf(zazny[j].value) < 0) {
 									czy = false;
-									
 								}
 							}
 							if (czy) licznik++;
