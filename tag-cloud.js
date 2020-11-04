@@ -42,6 +42,8 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	let textAlign = skrypt.getAttribute('textAlign');
 	if (textAlign !== 'right' && textAlign !== 'center') textAlign = 'left';
 	
+	let textColor = skrypt.getAttribute('textColor') ? skrypt.getAttribute('textColor') : 'black';
+	
 	elem.style.textAlign = textAlign;
 	
 	if (sorter) {
