@@ -105,6 +105,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		odznacz.setAttribute('class', 'pbpTC_uncheck');
 		odznacz.onclick = function() {
 			elem.querySelectorAll('input[type="checkbox"]:checked').forEach(i => i.checked = false);
+			szukacz.classList.add('unactive');
+			ileZnal.textContent = '0';
+			szukinfo.textContent = 'No selected labels to search';
 		}
 		dv.appendChild(odznacz);
 		skrypt.parentNode.insertBefore(dv, skrypt);
