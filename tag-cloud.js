@@ -45,7 +45,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	let borderRadius = skrypt.getAttribute('borderRadius') ? Number(skrypt.getAttribute('borderRadius')) : 5;
 	if (borderRadius < 0 || isNaN(borderRadius)) borderRadius = 5;
 	
-	let background = skrypt.getAttribute('background') ? skrypt.getAttribute('background') : transparent;
+	let background = skrypt.getAttribute('background') ? skrypt.getAttribute('background') : 'transparent';
 	
 	let tagIcon = skrypt.getAttribute('tagIcon') === 'false' ? false : true;
 	
