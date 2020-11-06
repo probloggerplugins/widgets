@@ -126,37 +126,37 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	style.innerHTML = style.innerHTML = `#{d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;}
+	style.innerHTML = style.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;}
 
-#{d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};border:${borderWidth}px solid ${borderColor+ ';}
+#${d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};border:${borderWidth}px solid ${borderColor+ ';}
 
-#{d} div.pbpLabel:hover a{text-decoration:underline;}
+#${d} div.pbpLabel:hover a{text-decoration:underline;}
 
-#{d} div.pbpLabel a svg{height:${textSize-3}px;fill:currentColor;margin-right:3px;}
+#${d} div.pbpLabel a svg{height:${textSize-3}px;fill:currentColor;margin-right:3px;}
 
-#{d} .pbpTC_searchButton{display:inline-flex;align-items:center;position:relative;font-size:${textSize}px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;}
+#${d} .pbpTC_searchButton{display:inline-flex;align-items:center;position:relative;font-size:${textSize}px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;}
 
-#{d} .pbpTC_searchButton:not(.unactive):hover{background:#b2b2b2;border-color:#bcbcbc;}
+#${d} .pbpTC_searchButton:not(.unactive):hover{background:#b2b2b2;border-color:#bcbcbc;}
 
-#{d} .pbpTC_searchButton:not(.unactive):active{border-style:inset;padding:5px 5px 1px 9px;}
+#${d} .pbpTC_searchButton:not(.unactive):active{border-style:inset;padding:5px 5px 1px 9px;}
 
-#{d} .pbpTC_searchButton.unactive {background:#818181;border:3px solid #818181;cursor:not-allowed;color:#464646;}
+#${d} .pbpTC_searchButton.unactive {background:#818181;border:3px solid #818181;cursor:not-allowed;color:#464646;}
 
-#{d} .pbpTC_searchButton .searchInfo{visibility:hidden;opacity:0;display:inline-block;position:absolute;bottom:calc(100% + 10px);left:calc(50% - 77px);background:#ffffc4;color:black;border:1px solid black;transition:opacity 1s;width:140px;border-radius:7px;padding:3px 7px;text-align:center;font-size:13px;font-weight:normal;line-height:1.2;}
+#${d} .pbpTC_searchButton .searchInfo{visibility:hidden;opacity:0;display:inline-block;position:absolute;bottom:calc(100% + 10px);left:calc(50% - 77px);background:#ffffc4;color:black;border:1px solid black;transition:opacity 1s;width:140px;border-radius:7px;padding:3px 7px;text-align:center;font-size:13px;font-weight:normal;line-height:1.2;}
 
-#{d} pbpTC_searchButton:hover .searchInfo{visibility:visible;opacity:1;transition:opacity 1s;}
+#${d} pbpTC_searchButton:hover .searchInfo{visibility:visible;opacity:1;transition:opacity 1s;}
 
-#{d} .pbpTC_searchButton .searchInfo:hover{visibility:hidden;opacity:0;}
+#${d} .pbpTC_searchButton .searchInfo:hover{visibility:hidden;opacity:0;}
 
-#{d} .pbpTC_searchButton .searchInfo:after {content:"";display:inline-block;position:absolute;left:calc(50% - 6px);top:100%;border-width:6px;border-style:solid;border-color:transparent;border-top:6px solid black;}
+#${d} .pbpTC_searchButton .searchInfo:after {content:"";display:inline-block;position:absolute;left:calc(50% - 6px);top:100%;border-width:6px;border-style:solid;border-color:transparent;border-top:6px solid black;}
 
-#{d} .pbpTC_searchButton svg{height:${textSize}px;margin-left:4px;fill:currentColor;}
+#${d} .pbpTC_searchButton svg{height:${textSize}px;margin-left:4px;fill:currentColor;}
 
-#{d} .pbpTC_uncheck{color:${textColor};font-size:${textSize-1}px;margin-left:20px;cursor:pointer;display:inline-flex;align-items:center;}
+#${d} .pbpTC_uncheck{color:${textColor};font-size:${textSize-1}px;margin-left:20px;cursor:pointer;display:inline-flex;align-items:center;}
 
-#{d} .pbpTC_uncheck:hover{text-decoration:underline;}
+#${d} .pbpTC_uncheck:hover{text-decoration:underline;}
 
-#{d} .pbpTC_uncheck svg {height:${textSize-1}px;margin-right:3px;}`
+#${d} .pbpTC_uncheck svg {height:${textSize-1}px;margin-right:3px;}`
 	
 	document.head.appendChild(styl);
 
