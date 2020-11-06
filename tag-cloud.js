@@ -35,20 +35,30 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let showCounter = skrypt.getAttribute('showCounter') === 'false' ? false : true;
 	
-	let ilMin = 0;
-	let ilMax = 0;
+	let borderWidth = skrypt.getAttribute('borderWidth') ? Number(skrypt.getAttribute('borderWidth')) : 1;
+	if (borderWidth < 0 || isNaN(borderWidth)) borderWidth = 1;
 	
+	let textColor = skrypt.getAttribute('textColor') ? skrypt.getAttribute('textColor') : 'black';
+	
+	let borderColor = skrypt.getAttribute('borderColor') ? skrypt.getAttribute('borderColor') : textColor;
+	
+	let borderRadius = skrypt.getAttribute('borderRadius') ? Number(skrypt.getAttribute('borderRadius')) : 5;
+	if (borderRadius < 0 || isNaN(borderRadius)) borderRadius = 5;
+	
+	let background = skrypt.getAttribute('background') ? skrypt.getAttribute('background') : transparent;
+	
+	let tagIcon = skrypt.getAttribute('tagIcon') === 'false' ? false : true;
 	
 	let textAlign = skrypt.getAttribute('textAlign');
 	if (textAlign !== 'right' && textAlign !== 'center') textAlign = 'left';
 	
-	let textColor = skrypt.getAttribute('textColor') ? skrypt.getAttribute('textColor') : 'black';
+	let ilMin = 0;
+	let ilMax = 0;
 	
 	elem.style.textAlign = textAlign;
 	
 	if (sorter) {
 		let dv = document.createElement('div');
-		dv.style.textAlign = textAlign;
 		dv.style.marginBottom = '10px';
 		dv.innerHTML = '<span style="font-size:' + textSize + 'px;margin-right:6px;">' + sortText + '</span>';
 		let sel = document.createElement('select');
@@ -66,12 +76,14 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 			}
 		}
 		dv.appendChild(sel);
-		elem.parentNode.insertBefore(dv, elem);
+		elem.appendChild(dv);
 	}
+	
+	let glowny = document.createElement('div');
+	elem.appendChild(glowny);
 	
 	if (combining) {
 		let dv = document.createElement('div');
-		dv.style.textAlign = textAlign;
 		dv.style.marginTop = '10px';
 		var szukacz = document.createElement('span');
 		szukacz.setAttribute('class', 'pbpTC_searchButton unactive');
@@ -93,7 +105,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		szukacz.onclick = function() {
 			if (!this.classList.contains('unactive')) {
 				let url = '/search/label/';
-				elem.querySelectorAll('input[type="checkbox"]:checked').forEach((lab, i) => {
+				glowny.querySelectorAll('input[type="checkbox"]:checked').forEach((lab, i) => {
 					url += (i > 0 ? '+' : '') + encodeURIComponent(lab.value);
 				});
 				location.href = url;
@@ -104,17 +116,48 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		odznacz.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 400c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h352c8.8 0 16 7.2 16 16v352zm-97.2-245.3L249.5 256l69.3 69.3c4.7 4.7 4.7 12.3 0 17l-8.5 8.5c-4.7 4.7-12.3 4.7-17 0L224 281.5l-69.3 69.3c-4.7 4.7-12.3 4.7-17 0l-8.5-8.5c-4.7-4.7-4.7-12.3 0-17l69.3-69.3-69.3-69.3c-4.7-4.7-4.7-12.3 0-17l8.5-8.5c4.7-4.7 12.3-4.7 17 0l69.3 69.3 69.3-69.3c4.7-4.7 12.3-4.7 17 0l8.5 8.5c4.6 4.7 4.6 12.3 0 17z"></path></svg>Uncheck all';
 		odznacz.setAttribute('class', 'pbpTC_uncheck');
 		odznacz.onclick = function() {
-			elem.querySelectorAll('input[type="checkbox"]:checked').forEach(i => i.checked = false);
+			glowny.querySelectorAll('input[type="checkbox"]:checked').forEach(i => i.checked = false);
 			szukacz.classList.add('unactive');
 			ileZnal.textContent = '0';
 			szukinfo.textContent = 'No selected labels to search';
 		}
 		dv.appendChild(odznacz);
-		skrypt.parentNode.insertBefore(dv, skrypt);
+		elem.appendChild(dv);
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = '#' + d + ' div.pbpLabel{margin:3px 8px;display:' + (display !== 'list' ? 'inline-flex' : 'flex') + ';justify-content:center;padding:2px 5px;' + (display === 'inline' ? 'border:1px solid ' + textColor + ';border-radius:5px;' : '') + '} div.pbpLabel a{text-decoration:none;font-size:'+textSize+'px;color:'+textColor+';} div.pbpLabel:hover a{text-decoration:underline;} div.pbpLabel a svg{height:' + (textSize-3) + 'px;fill:currentColor;margin-right:3px;} .pbpTC_searchButton{display:inline-flex;align-items:center;position:relative;font-size:' + textSize + 'px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;} .pbpTC_searchButton:not(.unactive):hover{background:#b2b2b2;border-color:#bcbcbc;} .pbpTC_searchButton:not(.unactive):active{border-style:inset;padding:5px 5px 1px 9px;} .pbpTC_searchButton.unactive {background:#818181;border:3px solid #818181;cursor:not-allowed;color:#464646;} .pbpTC_searchButton .searchInfo{visibility:hidden;opacity:0;display:inline-block;position:absolute;bottom:calc(100% + 10px);left:calc(50% - 77px);background:#ffffc4;color:black;border:1px solid black;transition:opacity 1s;width:140px;border-radius:7px;padding:3px 7px;text-align:center;font-size:13px;font-weight:normal;line-height:1.2;} .pbpTC_searchButton:hover .searchInfo{visibility:visible;opacity:1;transition:opacity 1s;} .pbpTC_searchButton .searchInfo:hover{visibility:hidden;opacity:0;} .pbpTC_searchButton .searchInfo:after {content:"";display:inline-block;position:absolute;left:calc(50% - 6px);top:100%;border-width:6px;border-style:solid;border-color:transparent;border-top:6px solid black;} .pbpTC_searchButton svg{height:' + textSize + 'px;margin-left:4px;fill:black;fill:currentColor;} .pbpTC_uncheck{color:' + textColor + ';font-size:' + (textSize-1) + 'px;margin-left:20px;cursor:pointer;display:inline-flex;align-items:center;} .pbpTC_uncheck:hover{text-decoration:underline;} .pbpTC_uncheck svg {height:' + (textSize-1) + 'px;margin-right:3px;}';
+	style.innerHTML = style.innerHTML = `#{d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;}
+
+#{d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};border:${borderWidth}px solid ${borderColor+ ';}
+
+#{d} div.pbpLabel:hover a{text-decoration:underline;}
+
+#{d} div.pbpLabel a svg{height:${textSize-3}px;fill:currentColor;margin-right:3px;}
+
+#{d} .pbpTC_searchButton{display:inline-flex;align-items:center;position:relative;font-size:${textSize}px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;}
+
+#{d} .pbpTC_searchButton:not(.unactive):hover{background:#b2b2b2;border-color:#bcbcbc;}
+
+#{d} .pbpTC_searchButton:not(.unactive):active{border-style:inset;padding:5px 5px 1px 9px;}
+
+#{d} .pbpTC_searchButton.unactive {background:#818181;border:3px solid #818181;cursor:not-allowed;color:#464646;}
+
+#{d} .pbpTC_searchButton .searchInfo{visibility:hidden;opacity:0;display:inline-block;position:absolute;bottom:calc(100% + 10px);left:calc(50% - 77px);background:#ffffc4;color:black;border:1px solid black;transition:opacity 1s;width:140px;border-radius:7px;padding:3px 7px;text-align:center;font-size:13px;font-weight:normal;line-height:1.2;}
+
+#{d} pbpTC_searchButton:hover .searchInfo{visibility:visible;opacity:1;transition:opacity 1s;}
+
+#{d} .pbpTC_searchButton .searchInfo:hover{visibility:hidden;opacity:0;}
+
+#{d} .pbpTC_searchButton .searchInfo:after {content:"";display:inline-block;position:absolute;left:calc(50% - 6px);top:100%;border-width:6px;border-style:solid;border-color:transparent;border-top:6px solid black;}
+
+#{d} .pbpTC_searchButton svg{height:${textSize}px;margin-left:4px;fill:currentColor;}
+
+#{d} .pbpTC_uncheck{color:${textColor};font-size:${textSize-1}px;margin-left:20px;cursor:pointer;display:inline-flex;align-items:center;}
+
+#{d} .pbpTC_uncheck:hover{text-decoration:underline;}
+
+#{d} .pbpTC_uncheck svg {height:${textSize-1}px;margin-right:3px;}`
+	
 	document.head.appendChild(styl);
 
 	function lapWszystko(f) {
@@ -156,8 +199,8 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 
 	function wyswietl(sort, typ) {
-		while (elem.firstChild) {
-			elem.removeChild(elem.firstChild);
+		while (glowny.firstChild) {
+			glowny.removeChild(glowny.firstChild);
 		}
 		wszysTagi.sort((a, b) => sort === 'popularity' ? b.i - a.i : a.k.localeCompare(b.k));
 		wszysTagi.forEach(t => {
@@ -168,7 +211,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 				czek.type = 'checkbox';
 				czek.value = t.k;
 				czek.oninput = function() {
-					let zazny = elem.querySelectorAll('input[type="checkbox"]:checked');
+					let zazny = glowny.querySelectorAll('input[type="checkbox"]:checked');
 					if (zazny.length) {
 						szukacz.classList.remove('unactive');
 						let licznik = 0;
@@ -204,7 +247,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 				a.style.fontSize = (80 + Math.round(proc)) + '%';
 			}
 			div.appendChild(a);
-			elem.appendChild(div);
+			glowny.appendChild(div);
 		});
 	
 	}
