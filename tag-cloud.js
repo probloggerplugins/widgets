@@ -126,7 +126,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = style.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;}
+	styl.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;}
 
 #${d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};border:${borderWidth}px solid ${borderColor};}
 
