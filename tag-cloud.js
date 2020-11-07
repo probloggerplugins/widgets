@@ -47,7 +47,14 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let background = skrypt.getAttribute('background') ? skrypt.getAttribute('background') : 'transparent';
 	
-	let tagIcon = skrypt.getAttribute('tagIcon') === 'false' ? false : true;
+	let tagIcon = skrypt.getAttribute('tagIcon');
+	if (tagIcon === 'false') {
+		tagIcon = false;
+	} else if (tagIcon === 'true') {
+		tagIcon = true;
+	} else {
+		tagIcon = combining ? false : true;
+	}
 	
 	let textAlign = skrypt.getAttribute('textAlign');
 	if (textAlign !== 'right' && textAlign !== 'center') textAlign = 'left';
