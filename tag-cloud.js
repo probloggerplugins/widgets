@@ -126,9 +126,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;${combining ? 'border:' + borderWidth + 'px solid ' + borderColor + 'background:' + background + ';padding:1px;' : ''}}
+	styl.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;${combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';background:' + background + ';padding:1px;' : ''}}
 
-#${d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};${!combining ? 'border:' + borderWidth + 'px solid ' + borderColor + 'background:' + background : ''}}
+#${d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};${!combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';background:' + background : ''}}
 
 ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#' + d + ' div.pbpLabel a:hover{text-decoration:underline;}'}
 
