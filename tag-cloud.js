@@ -129,15 +129,15 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = document.createElement('style');
-	styl.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;${combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';background:' + background + ';padding:1px;' : ''}}
+	styl.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;${combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';border-radius:'+borderRadius+'px;background:' + background + ';padding:2px;' : ''}}
 
-#${d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};${!combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';background:' + background : ''}}
+#${d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px;font-size:${textSize}px;color:${textColor};${!combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';border-radius:'+borderRadius+'px;background:' + background : ''}}
 
 ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#' + d + ' div.pbpLabel a:hover{text-decoration:underline;}'}
 
 #${d} div.pbpLabel a svg{height:${textSize-3}px;fill:currentColor;margin-right:3px;}
 
-#${d} div.pbpLabel.active {border:${borderWidth+1} solid ${borderColor};padding:0;}
+#${d} div.pbpLabel.active {border:${borderWidth+2}px solid ${borderColor};padding:0;}
 
 #${d} .pbpTC_searchButton{display:inline-flex;align-items:center;position:relative;font-size:${textSize}px;padding:3px 7px;background:#949494;border-width:3px;border-style:outset;border-color:#9e9e9e;border-radius:5px;cursor:pointer;}
 
