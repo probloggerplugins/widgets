@@ -149,7 +149,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 
 #${d} .pbpTC_searchButton .searchInfo{visibility:hidden;opacity:0;display:inline-block;position:absolute;bottom:calc(100% + 10px);left:calc(50% - 77px);background:#ffffc4;color:black;border:1px solid black;transition:opacity 1s;width:140px;border-radius:7px;padding:3px 7px;text-align:center;font-size:13px;font-weight:normal;line-height:1.2;}
 
-#${d} pbpTC_searchButton:hover .searchInfo{visibility:visible;opacity:1;transition:opacity 1s;}
+#${d} .pbpTC_searchButton:hover .searchInfo{visibility:visible;opacity:1;transition:opacity 1s;}
 
 #${d} .pbpTC_searchButton .searchInfo:hover{visibility:hidden;opacity:0;}
 
