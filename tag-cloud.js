@@ -177,7 +177,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 		let wpisy = f.responseXML.getElementsByTagName('entry');
 		for (let s=0; s<wpisy.length; s++) {
 			let kategorie = [];
-			wpisy[s][g]('category').forEach(e => {
+			wpisy[s][q]('category').forEach(e => {
 				let kat = e[g]('term');
 				kategorie.push(kat);
 				let ten = wszysTagi.filter(a => a.k === kat);
