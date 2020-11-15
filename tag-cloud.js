@@ -70,6 +70,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		}
 	}
 	
+	let requiredCounterValue = skrypt[g]('requiredCounterValue') ? Number(skrypt[g]('requiredCounterValue')) : 1;
+	if (requiredCounterValue < 1 || isNaN(requiredCounterValue)) requiredCounterValue = 1;
+	
 	let ilMin = 0;
 	let ilMax = 0;
 	
@@ -283,6 +286,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 	}
 
 	function gotowosc(e) {
+		wszysTagi = wszysTagi.filter(w => w.i >= requiredCounterValue);
 		wszysTagi.sort((a, b) => b.i - a.i);
 		ilMax = wszysTagi[0].i;
 		ilMin = wszysTagi[wszysTagi.length-1].i;
