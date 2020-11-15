@@ -30,6 +30,8 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let byPopularityText = skrypt[g]('byPopularityText') ? skrypt[g]('byPopularityText') : 'By popularity';
 	
+	let uncheckAllText = skrypt[g]('uncheckAllText') ? skrypt[g]('uncheckAllText') : 'Uncheck all';
+	
 	let combining = skrypt[g]('combining') === 'false' ? false : true;
 	
 	let sorter = skrypt[g]('sorter') === 'false' ? false : true;
@@ -59,6 +61,12 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let textAlign = skrypt[g]('textAlign');
 	if (textAlign !== 'right' && textAlign !== 'center') textAlign = 'left';
+	
+	let selectedLabels = skrypt[g]('selectedLabels') ? skrypt[g]('selectedLabels') : 'all';
+	if (selectedLabels.toLowerCase() !== 'all') {
+		selectedLabels = selectedLabels.split(',');
+		selectedLabels.forEach(t => t = decodeURIComponent(t));
+	}
 	
 	let ilMin = 0;
 	let ilMax = 0;
@@ -121,7 +129,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		}
 		dv.appendChild(szukacz);
 		let odznacz = doc.createElement('span');
-		odznacz.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 400c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h352c8.8 0 16 7.2 16 16v352zm-97.2-245.3L249.5 256l69.3 69.3c4.7 4.7 4.7 12.3 0 17l-8.5 8.5c-4.7 4.7-12.3 4.7-17 0L224 281.5l-69.3 69.3c-4.7 4.7-12.3 4.7-17 0l-8.5-8.5c-4.7-4.7-4.7-12.3 0-17l69.3-69.3-69.3-69.3c-4.7-4.7-4.7-12.3 0-17l8.5-8.5c4.7-4.7 12.3-4.7 17 0l69.3 69.3 69.3-69.3c4.7-4.7 12.3-4.7 17 0l8.5 8.5c4.6 4.7 4.6 12.3 0 17z"></path></svg>Uncheck all';
+		odznacz.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 400c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h352c8.8 0 16 7.2 16 16v352zm-97.2-245.3L249.5 256l69.3 69.3c4.7 4.7 4.7 12.3 0 17l-8.5 8.5c-4.7 4.7-12.3 4.7-17 0L224 281.5l-69.3 69.3c-4.7 4.7-12.3 4.7-17 0l-8.5-8.5c-4.7-4.7-4.7-12.3 0-17l69.3-69.3-69.3-69.3c-4.7-4.7-4.7-12.3 0-17l8.5-8.5c4.7-4.7 12.3-4.7 17 0l69.3 69.3 69.3-69.3c4.7-4.7 12.3-4.7 17 0l8.5 8.5c4.6 4.7 4.6 12.3 0 17z"></path></svg>' + uncheckAllText;
 		odznacz.setAttribute('class', 'pbpTC_uncheck');
 		odznacz.onclick = function() {
 			glowny[q]('input[type="checkbox"]:checked').forEach(i => {
@@ -180,14 +188,16 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 			wpisy[s][q]('category').forEach(e => {
 				let kat = e[g]('term');
 				kategorie.push(kat);
-				let ten = wszysTagi.filter(a => a.k === kat);
-				if (ten.length > 0) {
-					ten[0].i++
-				} else {
-					wszysTagi.push({
-						k : kat,
-						i : 1
-					});
+				if (selectedLabels !== 'all' && selectedLabels.indexOf(kat) >= 0) {
+					let ten = wszysTagi.filter(a => a.k === kat);
+					if (ten.length > 0) {
+						ten[0].i++
+					} else {
+						wszysTagi.push({
+							k : kat,
+							i : 1
+						});
+					}
 				}
 			});
 			posTagi.push(kategorie);
@@ -261,8 +271,8 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 			a.href = '/search/label/' + t.k;
 			a.innerHTML = (tagIcon ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>' : '') + t.k + (showCounter ? ' (' + t.i + ')' : '');
 			if (display === 'cloud') {
-				let proc = (ilMax - ilMin) > 0 ? 120 * (t.i - ilMin) / (ilMax - ilMin) : 20;
-				a.style.fontSize = (80 + Math.round(proc)) + '%';
+				let proc = (ilMax - ilMin) > 0 ? 130 * (t.i - ilMin) / (ilMax - ilMin) : 30;
+				a.style.fontSize = 0.7 * textSize + (textSize * proc / 100) + 'px';
 			}
 			div.appendChild(a);
 			glowny.appendChild(div);
