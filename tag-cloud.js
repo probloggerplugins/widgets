@@ -190,7 +190,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 			wpisy[s][q]('category').forEach(e => {
 				let kat = e[g]('term');
 				kategorie.push(kat);
-				if (selectedLabels !== 'all' && selectedLabels.indexOf(kat) >= 0) {
+				if (selectedLabels === 'all' || selectedLabels.indexOf(kat) >= 0) {
 					let ten = wszysTagi.filter(a => a.k === kat);
 					if (ten.length > 0) {
 						ten[0].i++
