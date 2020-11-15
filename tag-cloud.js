@@ -65,7 +65,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	let selectedLabels = skrypt[g]('selectedLabels') ? skrypt[g]('selectedLabels') : 'all';
 	if (selectedLabels.toLowerCase() !== 'all') {
 		selectedLabels = selectedLabels.split(',');
-		selectedLabels.forEach(t => t = decodeURIComponent(t));
+		for (let x=0; x<selectedLabels.length; x++) {
+			selectedLabels[x] = decodeURIComponent(selectedLabels[x])
+		}
 	}
 	
 	let ilMin = 0;
