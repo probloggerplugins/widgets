@@ -73,6 +73,16 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	let requiredCounterValue = skrypt[g]('requiredCounterValue') ? Number(skrypt[g]('requiredCounterValue')) : 1;
 	if (requiredCounterValue < 1 || isNaN(requiredCounterValue)) requiredCounterValue = 1;
 	
+	let numberOfLabels = skrypt[g]('numberOfLabels') ? skrypt[g]('numberOfLabels') : 'all';
+	if (!isNaN(numberOfLabels)) {
+		numberOfLabels = Number(numberOfLabels);
+		if (numberOfLabels < 1) {
+			numberOfLabels = 'all';
+		}
+	} else {
+		numberOfLabels = 'all';
+	}
+	
 	let ilMin = 0;
 	let ilMax = 0;
 	
@@ -288,6 +298,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 	function gotowosc(e) {
 		wszysTagi = wszysTagi.filter(w => w.i >= requiredCounterValue);
 		wszysTagi.sort((a, b) => b.i - a.i);
+		if (numberOfLabels !== 'all') wszysTagi = wszysTagi.slice(0, numberOfLabels);
 		ilMax = wszysTagi[0].i;
 		ilMin = wszysTagi[wszysTagi.length-1].i;
 		wyswietl(sortBy, display);
