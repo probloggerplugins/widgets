@@ -90,7 +90,8 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	if (sorter) {
 		let dv = doc.createElement('div');
-		dv.style.marginBottom = '10px';
+		dv.style.marginBottom = '14px';
+		dv.style.color = textColor;
 		dv.innerHTML = '<span style="font-size:' + textSize + 'px;margin-right:6px;">' + sortText + '</span>';
 		let sel = doc.createElement('select');
 		sel.innerHTML = '<option value="alphabetically"' + (sortBy !== 'popularity' ? ' selected' : '') + '>' + alphabeticallyText + '</option><option value="popularity"' + (sortBy === 'popularity' ? ' selected' : '') + '>' +byPopularityText + '</option>';
