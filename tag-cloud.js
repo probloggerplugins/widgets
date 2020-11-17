@@ -169,7 +169,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	}
 	
 	let styl = doc.createElement('style');
-	styl.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'};align-items:center;${combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';border-radius:'+borderRadius+'px;background:' + background + ';padding:2px;' : ''}}
+	styl.innerHTML = `#${d} div.pbpLabel{margin:3px 8px;display:${display !== 'list' ? 'inline-flex' : 'flex'}${display === 'list' ? ';justify-content:'+textAlign : ''};align-items:center;${combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';border-radius:'+borderRadius+'px;background:' + background + ';padding:2px;' : ''}}
 
 #${d} div.pbpLabel a{display:inline-flex;align-items:center;text-decoration:none;padding:2px 5px 2px ${combining ? '1' : '5'}px;font-size:${textSize}px;color:${textColor};${!combining ? 'border:' + borderWidth + 'px solid ' + borderColor + ';border-radius:'+borderRadius+'px;background:' + background : ''}}
 
