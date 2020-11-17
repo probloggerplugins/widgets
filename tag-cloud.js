@@ -124,6 +124,7 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		let dv = doc.createElement('div');
 		dv.style.marginTop = '14px';
 		dv.style.display = 'flex';
+		dv.style.justifyContent = textAlign;
 		var szukacz = doc.createElement('span');
 		szukacz.setAttribute('class', 'pbpTC_searchButton unactive');
 		szukacz.innerHTML = searchText + ' (';
