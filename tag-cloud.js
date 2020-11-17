@@ -99,6 +99,10 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 		sel.style.cursor = 'pointer';
 		
 		sel.onchange = function() {
+			while (glowny.firstChild) {
+				glowny.removeChild(glowny.firstChild);
+			}
+			glowny.appendChild(laduj);
 			wyswietl(this.value, display);
 			if (combining) {
 				szukacz.classList.add('unactive');
