@@ -122,7 +122,8 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	if (combining) {
 		let dv = doc.createElement('div');
-		dv.style.marginTop = '10px';
+		dv.style.marginTop = '14px';
+		dv.style.display = 'flex';
 		var szukacz = doc.createElement('span');
 		szukacz.setAttribute('class', 'pbpTC_searchButton unactive');
 		szukacz.innerHTML = searchText + ' (';
@@ -201,7 +202,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 
 #${d} .pbpTC_uncheck svg {height:${textSize-1}px;margin-right:3px;}
 
-#${d} .pbpLoader {border:15px solid #f3f3f3;border-radius:50%;border-top:15px solid #3498db;width:50px;height:50px;animation:dawaj 1s linear infinite;}
+#${d} .pbpLoader {border:6px solid #f3f3f3;border-radius:50%;border-top:6px solid #3498db;width:25px;height:25px;animation:dawaj 1s linear infinite;${textAlign === 'center' ? 'margin:auto;' : ''}}
 
 @keyframes dawaj {0% {transform: rotate(0deg);} 100% {transform:rotate(360deg);}}`
 	
