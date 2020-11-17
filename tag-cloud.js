@@ -112,6 +112,9 @@ pbpTagCloud = typeof pbpTagCloud == 'undefined' ? 0 : pbpTagCloud+1;
 	
 	let glowny = doc.createElement('div');
 	elem.appendChild(glowny);
+	let laduj = document.createElement('div');
+	laduj.setAttribute('class', 'pbpLoader');
+	glowny.appendChild(laduj);
 	
 	if (combining) {
 		let dv = doc.createElement('div');
@@ -192,7 +195,11 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 
 #${d} .pbpTC_uncheck:hover{text-decoration:underline;}
 
-#${d} .pbpTC_uncheck svg {height:${textSize-1}px;margin-right:3px;}`
+#${d} .pbpTC_uncheck svg {height:${textSize-1}px;margin-right:3px;}
+
+#${d} .pbpLoader {border:15px solid #f3f3f3;border-radius:50%;border-top:15px solid #3498db;width:50px;height:50px;animation:dawaj 1s linear infinite;}
+
+@keyframes dawaj {0% {transform: rotate(0deg);} 100% {transform:rotate(360deg);}}`
 	
 	doc.head.appendChild(styl);
 
