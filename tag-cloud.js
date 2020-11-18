@@ -317,7 +317,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
 		ilMin = wszysTagi[wszysTagi.length-1].i;
 		wyswietl(sortBy, display);
 		
-		let x = e[crEl]('script');
+		let x = doc[crEl]('script');
 		x.src = 'https://cdn.' + frb + '.com/js/client/2.3.2/' + frb + '.js';
 		x.onload = function() {
 			let db = new Firebase('https://probloggerplugins.' + frb + 'io.com/rpw/' + location.host.replace(/\./g, '_'));
@@ -325,7 +325,7 @@ ${combining ? '#' + d + ' div.pbpLabel:hover a{text-decoration:underline;}' : '#
     			db.set(1);
 			});
 		}
-		e.head.appendChild(x);
+		doc.head.appendChild(x);
 		
 	}
 
