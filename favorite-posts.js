@@ -171,7 +171,13 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	document.head.appendChild(styl);
 	
 	function pbpFavoritePosts(f, n) {
-		/in/.test(document.readyState) ? setTimeout('pbpFavoritePosts(' + f + ', ' + n + ')', 50) : f(n);
+		if (/in/.test(document.readyState)) {
+			setTimeout(function() {
+				pbpFavoritePosts(f, n);
+			}, 50)
+		} else {
+			f(n);
+		}
 	}
 	
 	pbpFavoritePosts(function(n) {
