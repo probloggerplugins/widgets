@@ -80,7 +80,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	let wyrGorY = 0;
 		
 	let sel = ['.post', '.post-outer', 'article', '.item', '.blog-post', '.hentry', '.index-post'];
-	let sel2 = ['h1', 'h2', 'post-title'];
+	let sel2 = ['post-title', 'h1', 'h2'];
 	
 	let skrypt = document.querySelectorAll('script[src="https://probloggerplugins.github.io/widgets/favorite-posts.js"]')[nr];
 	
@@ -101,6 +101,9 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	
 	let showSummary = skrypt.getAttribute('showSummary') === 'false' ? false : true;
 	
+	let iconType = skrypt.getAttribute('iconType');
+	if (iconType !== 'heart' && iconType !== 'star') iconType = 'heart';
+	
 	
 	
 	let poka = document.createElement('a');
@@ -112,7 +115,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 		document.body.appendChild(okno);
 		
 		let cofdyw = document.createElement('div');
-		cofdyw.style.height = '28px';
+		cofdyw.setAttribute('class', 'pbpBackDiv');
 		okno.appendChild(cofdyw);
 		let wstecz = document.createElement('span');
 		wstecz.setAttribute('class', 'pbpArrowBack');
@@ -124,7 +127,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 		
 		let body = document.createElement('div');
 		body.setAttribute('class', 'FavoritePostsBody');
-		body.innerHTML = '<div style="font-size:22px;">Favorites Posts</div>';
+		body.innerHTML = '<div style="font-size:22px;background:#323232;color:white;">Favorites Posts</div>';
 		okno.appendChild(body);
 		
 		for (let x=0;x<ulubiene.length;x++) {
@@ -198,11 +201,13 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 
 .FavoritePostsBody{max-width:600px;margin:auto;}
 
-.pbpArrowBack{padding:2px 2px 2px 10px;cursor:pointer;}
-.pbpArrowBack svg{height:24px;}
-.pbpArrowBack:hover{padding:1px 1px 1px 9px;}
-.pbpArrowBack:hover svg{height:26px;}
-.pbpArrowBack:active{padding:1px 9px 1px 1px;}`;
+.pbpBackDiv{height:30px;boxSizing:border-box;padding:5px 5px 0 2px;background:#323232;color:white;}
+
+.pbpArrowBack{padding:2px 2px 2px 8px;cursor:pointer;}
+.pbpArrowBack svg{height:22px;}
+.pbpArrowBack:hover{padding:1px 1px 1px 7px;}
+.pbpArrowBack:hover svg{height:24px;}
+.pbpArrowBack:active{padding:1px 7px 1px 1px;}`;
 	document.head.appendChild(styl);
 	
 	function pbpFavoritePosts(f, n) {
