@@ -79,7 +79,7 @@ var pbpFavPostsCnt = pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt + 1;
 	let sel = ['.post', '.post-outer', 'article', '.item', '.blog-post', '.hentry', '.index-post'];
 	let sel2 = ['h1', 'h2', 'post-title'];
 	
-	let sktypt = document.querySelectorAll('script[src="https://probloggerplugins.github.io/widgets/favorite-posts.js"]')[nr];
+	let skrypt = document.querySelectorAll('script[src="https://probloggerplugins.github.io/widgets/favorite-posts.js"]')[nr];
 	
 	let iconSize = Number(skrypt.getAttribute('iconSize'));
 	if (iconSize < 8 || isNaN(iconSize)) iconSize = 20;
