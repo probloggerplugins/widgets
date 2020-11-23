@@ -90,6 +90,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	
 	let poka = document.createElement('a');
 	poka.textContent = favoritesPostsText;
+	skrypt.parentNode.insertBefore(poka, skrypt);
 	poka.onclick = function() {
 		let okno = document.createElement('div');
 		okno.setAttribute('class', 'FavoritePostsWindow');
