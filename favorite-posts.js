@@ -124,10 +124,13 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 			document.body.removeChild(okno);
 		}
 		cofdyw.appendChild(wstecz);
+		let tytul = document.createElement('div');
+		tytul.setAttribute('class', 'FavPostsPageTitle')
+		tytul.innerHTML = 'Favorite Posts';
+		okno.appendChild(tytul);
 		
 		let body = document.createElement('div');
 		body.setAttribute('class', 'FavoritePostsBody');
-		body.innerHTML = '<div style="font-size:22px;background:#323232;color:white;">Favorites Posts</div>';
 		okno.appendChild(body);
 		
 		for (let x=0;x<ulubiene.length;x++) {
@@ -204,11 +207,13 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 
 .pbpBackDiv{height:30px;boxSizing:border-box;padding:5px 5px 0 2px;background:#323232;color:white;}
 
-.pbpArrowBack{padding:2px 2px 2px 8px;cursor:pointer;}
+.pbpArrowBack{padding:2px 2px 2px 8px;cursor:pointer;color:white;}
 .pbpArrowBack svg{height:22px;}
 .pbpArrowBack:hover{padding:1px 1px 1px 7px;}
 .pbpArrowBack:hover svg{height:24px;}
 .pbpArrowBack:active{padding:1px 7px 1px 1px;}
+
+.FavPostsPageTitle{font-size:22px;background:#323232;color:white;padding-bottom:10px;font-weight:bold;}
 
 .pbpFavPostBox{padding:7px;border:1px solid black;border-radius:10px;}
 
