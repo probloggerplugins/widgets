@@ -84,12 +84,12 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	let iconSize = Number(skrypt.getAttribute('iconSize'));
 	if (iconSize < 8 || isNaN(iconSize)) iconSize = 20;
 	
-	let favoritesPostsText = skrypt.getAttribute('favoritesPostsText') ? skrypt.getAttribute('favoritesPostsText') : 'Favorites Posts';
+	let favoritePostsText = skrypt.getAttribute('favoritePostsText') ? skrypt.getAttribute('favoritePostsText') : 'Favorites Posts';
 	
 	let showTitle = skrypt.getAttribute('showTitle') === 'false' ? false : true;
 	
 	let poka = document.createElement('a');
-	poka.textContent = favoritesPostsText;
+	poka.textContent = favoritePostsText;
 	skrypt.parentNode.insertBefore(poka, skrypt);
 	poka.onclick = function() {
 		let okno = document.createElement('div');
