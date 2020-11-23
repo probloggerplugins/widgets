@@ -89,8 +89,8 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	let showTitle = skrypt.getAttribute('showTitle') === 'false' ? false : true;
 	
 	let poka = document.createElement('a');
-	a.textContent = favoritesPostsText;
-	a.onclick = function() {
+	poka.textContent = favoritesPostsText;
+	poka.onclick = function() {
 		let okno = document.createElement('div');
 		okno.setAttribute('class', 'FavoritePostsWindow');
 		document.body.appendChild(okno);
