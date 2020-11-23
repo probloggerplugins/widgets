@@ -80,7 +80,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	let wyrGorY = 0;
 		
 	let sel = ['.post', '.post-outer', 'article', '.item', '.blog-post', '.hentry', '.index-post'];
-	let sel2 = ['post-title', 'h1', 'h2'];
+	let sel2 = ['.post-title', 'h1', 'h2', 'h3'];
 	
 	let skrypt = document.querySelectorAll('script[src="https://probloggerplugins.github.io/widgets/favorite-posts.js"]')[nr];
 	
