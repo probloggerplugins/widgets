@@ -120,7 +120,7 @@ var pbpFavPostsCnt = pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt + 1;
 								't' : wpis.querySelector('title').textContent,
 								'd' : wpis.querySelector('published').textContent.substring(0, 10),
 								'a' : wpis.querySelector('author').querySelector('name').textContent,
-								'k' : Number(wpis.getElementsByTagName('thr\:total')[0].textContent,
+								'k' : Number(wpis.getElementsByTagName('thr\:total')[0].textContent),
 								'l' : [],
 								's' : wpis.querySelector('summary').textContent.replace(/<(?:.|\n)*?>/gm, '').substring(0, 200),
 								'o' : wpis.getElementsByTagName('media\:thumbnail').length ? wpis.getElementsByTagName('media\:thumbnail')[0].getAttribute('url') : 'https://3.bp.blogspot.com/-go-1bJQKzCY/XIpRVUCKeCI/AAAAAAAAAQM/YUdYK3hEkcIFwcz0r-T2uErre0JOJWnrwCLcBGAs/s1600/no-image.png'
