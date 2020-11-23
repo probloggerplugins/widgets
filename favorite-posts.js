@@ -111,6 +111,16 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 		okno.setAttribute('class', 'FavoritePostsWindow');
 		document.body.appendChild(okno);
 		
+		let cofdyw = document.createElement('div');
+		okno.appendChild(cofdyw);
+		let wstecz = document.createElement('span');
+		wstecz.setAttribute('class', 'pbpArrowBack');
+		wstecz.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg>';
+		wstecz.onclick = function() {
+			document.body.removeChild(okno);
+		}
+		cofdyw.appendChild(wstecz);
+		
 		let body = document.createElement('div');
 		body.setAttribute('class', 'FavoritePostsBody');
 		body.innerHTML = '<div style="font-size:22px;">Favorites Posts</div>';
@@ -185,7 +195,13 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 
 .FavoritePostsWindow{display:block;position:fixed;top:0;left:0;width:100%;height:100%;overflow:auto;background:white;z-index:999999999;}
 
-.FavoritePostsBody{max-width:600px;margin:auto;}`;
+.FavoritePostsBody{max-width:600px;margin:auto;}
+
+.pbpArrowBack{padding:2px 2px 2px 10px}
+.pbpArrowBack svg{height:24px;}
+.pbpArrowBack:hover{padding:1px 1px 1px 9px;}
+.pbpArrowBack:hover svg{height:26px;}
+.pbpArrowBack:active{padding:1px 9px 1px 1px;}`;
 	document.head.appendChild(styl);
 	
 	function pbpFavoritePosts(f, n) {
