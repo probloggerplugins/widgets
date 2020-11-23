@@ -168,7 +168,9 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 
 .pbpFavInfo{display:none;opacity:0;position:absolute;z-index:9999999;width:90px;padding:3px;background:yellow;border:1px solid black;color:black;border-radius:7px;text-align:center;transition:opacity 0.6s;font-family:Calibri;font-size:13px;line-height:1.2;}
 
-.FavoritePostsWindow{display:block;position:fixed;top:0;left:0;width:100%;height:100%;overflow:auto;}`;
+.FavoritePostsWindow{display:block;position:fixed;top:0;left:0;width:100%;height:100%;overflow:auto;background:white;}
+
+.FavoritePostsBody{max-width:600px;margin:auto;}`;
 	document.head.appendChild(styl);
 	
 	function pbpFavoritePosts(f, n) {
