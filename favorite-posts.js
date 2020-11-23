@@ -112,6 +112,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 		document.body.appendChild(okno);
 		
 		let cofdyw = document.createElement('div');
+		cofdyw.style.height = '28px';
 		okno.appendChild(cofdyw);
 		let wstecz = document.createElement('span');
 		wstecz.setAttribute('class', 'pbpArrowBack');
@@ -197,7 +198,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 
 .FavoritePostsBody{max-width:600px;margin:auto;}
 
-.pbpArrowBack{padding:2px 2px 2px 10px}
+.pbpArrowBack{padding:2px 2px 2px 10px;cursor:pointer;}
 .pbpArrowBack svg{height:24px;}
 .pbpArrowBack:hover{padding:1px 1px 1px 9px;}
 .pbpArrowBack:hover svg{height:26px;}
