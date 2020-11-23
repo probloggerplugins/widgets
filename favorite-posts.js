@@ -1,4 +1,4 @@
-var pbpFavPostsCnt = pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt + 1;
+var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt + 1;
 
 (function(nr) {
 	
