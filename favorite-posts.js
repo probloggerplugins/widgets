@@ -18,6 +18,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	function pierdolnij(gdzie, url) {
 		let dyw = document.createElement('div');
 		dyw.style.position = 'relative';
+		dyw.style.height = (iconSize + 2) + 'px';
 		let ul = document.createElement('span');
 		ul.setAttribute('class', 'pbpFavourite');
 		let inf = document.createElement('span');
@@ -217,7 +218,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 
 .pbpFavPostBox{padding:7px;border:1px solid black;border-radius:10px;margin-bottom:12px;}
 
-.favorite-post-title{margin-bottom:10px;}
+.favorite-post-title{margin-bottom:8px;}
 .favorite-post-title a{font-size:18px;color:blue;text-decoration:none;font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;}`;
 	document.head.appendChild(styl);
 	
