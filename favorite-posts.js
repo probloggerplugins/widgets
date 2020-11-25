@@ -135,7 +135,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 				let wpis = zap2.responseXML.querySelector('entry');
 							
 				let obi = {
-					'u' : wpis.querySelector('link[rel="alternate"]').getAttribute('href');
+					'u' : wpis.querySelector('link[rel="alternate"]').getAttribute('href'),
 					't' : wpis.querySelector('title').textContent,
 					'd' : wpis.querySelector('published').textContent.substring(0, 10),
 					'a' : wpis.querySelector('author').querySelector('name').textContent,
@@ -151,7 +151,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 				let dyw2 = document.createElement('div');
 				dyw2.setAttribute('class', 'pbpFavPostBox');
 							
-				dyw2.innerHTML = '<div class="favorite-post-title"><a href="' + ulubiene[x] + '" title="' + obi.t + '">' + obi.t + '</a></div>';
+				dyw2.innerHTML = '<div class="favorite-post-title"><a href="' + obi.u + '" title="' + obi.t + '">' + obi.t + '</a></div>';
 				if (showAuthor || showComments || showDate) dyw2.innerHTML += '<div class="favorite-post-info">';
 				if (showAuthor) dyw2.innerHTML += '<span style="display:inline-block;font-size:16px;margin-right:15px;display:inline-flex;align-items:center;cursor:default;" title="Author: ' + obi.a + '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height:14px;margin-right:3px;"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>' + obi.a + '</span>';
 				if (showComments) dyw2.innerHTML += '<span style="display:inline-block;font-size:16px;margin-right:15px;display:inline-flex;align-items:center;cursor:default;" title="' + obi.k + ' comments"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:14px;margin-right:3px;"><path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"></path></svg>' + obi.k + '</span>';
@@ -160,7 +160,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 				if (showLabels) dyw2.innerHTML += '<div>';
 				if (showLabels) obi.l.forEach(k => dyw2.innerHTML += '<span style="display:inline-flex;align-items:center;padding:2px 5px;border-radius:5px;margin:5px;background:#9d0000;color:white;cursor:default" title="' + k + '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:13px;margin-right:3px;"><path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>' + k + '</span>');
 				if (showLabels) dyw2.innerHTML += '</div>';
-				if (showSummary) dyw2.innerHTML += '<div style="font-size:15px;font-style:italic;">' + obi.s + '... <a title="Read more" href="' + ulubiene[x] + '" class="pbpReadMore"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg></a></div>';
+				if (showSummary) dyw2.innerHTML += '<div style="font-size:15px;font-style:italic;">' + obi.s + '... <a title="Read more" href="' + obi.u + '" class="pbpReadMore"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg></a></div>';
 				
 				dyw.appendChild(dyw2);
 			}
