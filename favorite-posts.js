@@ -238,6 +238,7 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 	}
 	
 	function wal() {
+		let majn = document.querySelector('#main');
 		for (let s=0; s<sel.length; s++) {
 			if (majn.querySelector(sel[s])) {
 				let posty = majn.querySelectorAll(sel[s]);
@@ -283,8 +284,6 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 	}
 	
 	pbpFavoritePosts(function(n) {
-
-		var majn = document.querySelector('#main');
 		
 		
 		if (/.*\/\d{4}\/\d{2}\/.*\.html/.test(location.href.split('?')[0])) { // post page
