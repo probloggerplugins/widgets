@@ -131,6 +131,9 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	let iconType = skrypt.getAttribute('iconType');
 	if (iconType !== 'heart' && iconType !== 'star') iconType = 'heart';
 	
+	let position = skrypt.getAttribute('position');
+	if (position !== 'left' && position !== 'center') position = 'right';
+	
 	
 	function wyswietl(postId, dyw) {
 		let zap2 = new XMLHttpRequest();
