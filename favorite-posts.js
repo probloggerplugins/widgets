@@ -163,6 +163,10 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 				if (showSummary) dyw2.innerHTML += '<div style="font-size:15px;font-style:italic;">' + obi.s + '... <a title="Read more" href="' + obi.u + '" class="pbpReadMore"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg></a></div>';
 				
 				dyw.appendChild(dyw2);
+				
+				if (document.getElementsByClassName('pbpFavPostBox').length === ulubiene.length) {
+					document.querySelector('.pbpLoadIcon').remove();
+				}
 			}
 		}
 		zap2.send();
@@ -197,22 +201,32 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 		body.setAttribute('class', 'FavoritePostsBody');
 		okno.appendChild(body);
 		
-		for (let x=0;x<ulubiene.length;x++) {
+		if (ulubiene.length) {
 			
+			let loDiv = document.createElement('div');
+			okno.appendChild(loDiv);
+			let load = document.createElement('div');
+			load.setAttribute('class', 'pbpLoadIcon');
+			loDiv.appendChild(load);
+			
+			for (let x=0;x<ulubiene.length;x++) {
 
-			let dyw = document.createElement('div');
-			body.appendChild(dyw);
-			
-			
-			if (ulubiene[x].i) {
-				wyswietl(ulubiene[x].i, dyw);
-			} else {
-				getIdByUrl(ulubiene[x].u, function(postId) {
-					wyswietl(postId, dyw);
-				})
+				let dyw = document.createElement('div');
+				body.appendChild(dyw);
+				
+				if (ulubiene[x].i) {
+					wyswietl(ulubiene[x].i, dyw);
+				} else {
+					getIdByUrl(ulubiene[x].u, function(postId) {
+						wyswietl(postId, dyw);
+					})
+				}
+				
 			}
-			
+		} else {
+			body.innerHTML = 'You have no posts in your favorites list.';
 		}
+		
 	}
 	
 	
@@ -252,7 +266,11 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 .favorite-post-title a:hover{text-decoration:underline;}
 
 a.pbpReadMore svg{height:13px;fill:#890000;padding:1px;}
-a.pbpReadMore:hover svg {height:15px;padding:0;}`;
+a.pbpReadMore:hover svg {height:15px;padding:0;}
+
+.pbpLoadIcon {border:6px solid #f3f3f3;border-radius:50%;border-top:6px solid #3498db;width:25px;height:25px;animation:dawaj 1s linear infinite;margin:auto;}
+
+@keyframes dawaj {0% {transform: rotate(0deg);} 100% {transform:rotate(360deg);}}`;
 	document.head.appendChild(styl);
 	
 	function pbpFavoritePosts(f, n) {
