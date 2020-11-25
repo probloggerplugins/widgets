@@ -301,6 +301,10 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 		
 			wal();
 			
+			setInterval(function() {
+				wal();
+			}, 700);
+			
 		}
 		
 	}, nr);
