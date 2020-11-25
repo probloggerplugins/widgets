@@ -135,6 +135,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 				let wpis = zap2.responseXML.querySelector('entry');
 							
 				let obi = {
+					'u' : wpis.querySelector('link[rel="alternate"]').getAttribute('href');
 					't' : wpis.querySelector('title').textContent,
 					'd' : wpis.querySelector('published').textContent.substring(0, 10),
 					'a' : wpis.querySelector('author').querySelector('name').textContent,
