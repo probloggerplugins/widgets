@@ -284,7 +284,7 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 	
 	pbpFavoritePosts(function(n) {
 
-		let majn = document.querySelector('#main');
+		var majn = document.querySelector('#main');
 		
 		
 		if (/.*\/\d{4}\/\d{2}\/.*\.html/.test(location.href.split('?')[0])) { // post page
