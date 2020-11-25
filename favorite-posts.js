@@ -289,6 +289,7 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 		if (/.*\/\d{4}\/\d{2}\/.*\.html/.test(location.href.split('?')[0])) { // post page
 			
 			let url = location.href.split('?')[0].split('#')[0];
+			let majn = document.querySelector('#main');
 			for (let s=0; s<sel2.length; s++) {
 				if (majn.querySelector(sel2[s])) {
 					let tytul = majn.querySelector(sel2[s]);
