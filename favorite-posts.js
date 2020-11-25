@@ -10,9 +10,10 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 				let postId = zap.response.split("'postId':")[1].split("'")[1];
 				kalbak(postId);
 			}
-			zap.send();
 		}
+		zap.send();
 	}
+	
 	
 	function lapUrl(el) {
 		if (el.tagName === 'A' && el.getAttribute('href')) {
@@ -66,7 +67,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 							localStorage.pbpFavorites = JSON.stringify(ulubiene);
 						}
 					}
-				})
+				});
 			}
 			localStorage.pbpFavorites = JSON.stringify(ulubiene);
 		}
