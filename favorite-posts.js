@@ -237,28 +237,12 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 		}
 	}
 	
-	pbpFavoritePosts(function(n) {
-
-		let majn = document.querySelector('#main');
-		
-		
-		if (/.*\/\d{4}\/\d{2}\/.*\.html/.test(location.href.split('?')[0])) { // post page
-			
-			let url = location.href.split('?')[0].split('#')[0];
-			for (let s=0; s<sel2.length; s++) {
-				if (majn.querySelector(sel2[s])) {
-					let tytul = majn.querySelector(sel2[s]);
-					pierdolnij(tytul, url);
-					break;
-				}
-			}
-			
-		} else if (!/.*\/p\/.*\.html/.test(location.href.split('?')[0])) { // index page
-		
-			for (let s=0; s<sel.length; s++) {
-				if (majn.querySelector(sel[s])) {
-					let posty = majn.querySelectorAll(sel[s]);
-					posty.forEach(p => {
+	function wal() {
+		for (let s=0; s<sel.length; s++) {
+			if (majn.querySelector(sel[s])) {
+				let posty = majn.querySelectorAll(sel[s]);
+				posty.forEach(p => {
+					if (!p.querySelector('.pbpFavourite')) {
 						let urle = p.querySelectorAll('a[href]');
 						if (urle.length) {
 							for (let k=0;k<urle.length;k++) {
@@ -279,22 +263,44 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 								pierdolnij(gorny, gorny.getAttribute('href'));
 							}
 						}
-					})
 					
+					}
 					
+				})
+				break;
+			} else if (s === sel.length - 1) {
+				let zlapane = [];
+				urle = majn.querySelectorAll('a[href]');
+				urle.forEach(u => {
+					let url = u.getAttribute('href').split('?')[0];
+					if (url.indexOf(location.protocol + '//' + location.host) === 0 && /.*\/\d{4}\/\d{2}\/.*\.html/.test(url) && zlapane.indexOf(url) < 0) {
+						pierdolnij(u, url);
+						zlapane.push(url);
+					}
+				})
+			}
+		}
+	}
+	
+	pbpFavoritePosts(function(n) {
+
+		let majn = document.querySelector('#main');
+		
+		
+		if (/.*\/\d{4}\/\d{2}\/.*\.html/.test(location.href.split('?')[0])) { // post page
+			
+			let url = location.href.split('?')[0].split('#')[0];
+			for (let s=0; s<sel2.length; s++) {
+				if (majn.querySelector(sel2[s])) {
+					let tytul = majn.querySelector(sel2[s]);
+					pierdolnij(tytul, url);
 					break;
-				} else if (s === sel.length - 1) {
-					let zlapane = [];
-					urle = majn.querySelectorAll('a[href]');
-					urle.forEach(u => {
-						let url = u.getAttribute('href').split('?')[0];
-						if (url.indexOf(location.protocol + '//' + location.host) === 0 && /.*\/\d{4}\/\d{2}\/.*\.html/.test(url) && zlapane.indexOf(url) < 0) {
-							pierdolnij(u, url);
-							zlapane.push(url);
-						}
-					})
 				}
 			}
+			
+		} else if (!/.*\/p\/.*\.html/.test(location.href.split('?')[0])) { // index page
+		
+			wal();
 			
 		}
 		
