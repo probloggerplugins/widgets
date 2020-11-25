@@ -126,6 +126,8 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	
 	let showSummary = skrypt.getAttribute('showSummary') === 'false' ? false : true;
 	
+	let showImage = skrypt.getAttribute('showImage') === 'false' ? false : true;
+	
 	let iconType = skrypt.getAttribute('iconType');
 	if (iconType !== 'heart' && iconType !== 'star') iconType = 'heart';
 	
