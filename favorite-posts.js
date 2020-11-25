@@ -175,7 +175,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 							if (showLabels) dyw2.innerHTML += '<div>';
 							if (showLabels) obi.l.forEach(k => dyw2.innerHTML += '<span style="display:inline-flex;align-items:center;padding:2px 5px;border-radius:5px;margin:5px;background:#9d0000;color:white;cursor:default" title="' + k + '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:13px;margin-right:3px;"><path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>' + k + '</span>');
 							if (showLabels) dyw2.innerHTML += '</div>';
-							if (showSummary) dyw2.innerHTML += '<div style="font-size:15px;font-style:italic;">' + obi.s + '... <a title="Read more" href="' + ulubiene[x] + '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height:13px;"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg></a></div>';
+							if (showSummary) dyw2.innerHTML += '<div style="font-size:15px;font-style:italic;">' + obi.s + '... <a title="Read more" href="' + ulubiene[x] + '" class="pbpReadMore"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg></a></div>';
 					
 						}
 					}
@@ -220,8 +220,11 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 .pbpFavPostBox{padding:7px;border:1px solid black;border-radius:10px;margin-bottom:12px;background:#d6d6d6;line-height:1.25;color:black;}
 
 .favorite-post-title{margin-bottom:8px;}
-.favorite-post-title a{font-size:18px;color:#0000b1;text-decoration:none;font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;}
-.favorite-post-title a:hover{text-decoration:underline;}`;
+.favorite-post-title a{font-size:18px;color:#890000;text-decoration:none;font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;}
+.favorite-post-title a:hover{text-decoration:underline;}
+
+a.pbpReadMore svg{height:13px;fill:#890000;padding:1px;}
+a.pbpReadMore:hover svg {height:15px;padding:0;}`;
 	document.head.appendChild(styl);
 	
 	function pbpFavoritePosts(f, n) {
