@@ -7,7 +7,12 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 		zap.open('GET', url);
 		zap.onload = function() {
 			if (zap.status === 200) {
-				let postId = zap.response.split("'postId':")[1].split("'")[1];
+				let postId;
+				if (zap.response.indexOf("'postId':") >= 0 && zap.response.split("'postId':")[1].indexOf("'") && isNaN(zap.response.split("'postId':")[1].split("'")[1])) {
+					postId = zap.response.split("'postId':")[1].split("'")[1];
+				} else if (zap.response.indexOf("postID=") >= 0 && isNaN(zap.response.split("postID=")[1].split(/\&|\'/)[1])) {
+					postId = zap.response.split("postID=")[1].split(/\&|\'/)[1];
+				}
 				kalbak(postId);
 			}
 		}
