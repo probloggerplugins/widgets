@@ -275,9 +275,9 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	styl.innerHTML = `
 .pbpFavourite{display:inline-block;width:${iconSize+2}px;height:${iconSize+2}px;background-repeat:no-repeat;background-size:${iconSize}px ${iconSize}px;background-position:1px 1px;cursor:pointer;z-index:99999999;}
 
-.pbpFavourite[active="false"] {background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="${bazaIkon[icon].vB"><path fill="${encodeURIComponent(iconColor)}" d="${bazaIkon[icon].pusta}"></path></svg>')}
+.pbpFavourite[active="false"] {background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="${bazaIkon[icon].vB}"><path fill="${encodeURIComponent(iconColor)}" d="${bazaIkon[icon].pusta}"></path></svg>')}
 
-.pbpFavourite[active="true"] {background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="${bazaIkon[icon].vB"><path fill="${encodeURIComponent(iconColor)}" d="${bazaIkon[icon].pelna}"></path></svg>')}
+.pbpFavourite[active="true"] {background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="${bazaIkon[icon].vB}"><path fill="${encodeURIComponent(iconColor)}" d="${bazaIkon[icon].pelna}"></path></svg>')}
 
 .pbpFavourite:hover{background-size:${iconSize+2}px ${iconSize+2}px;background-position:0px 0px;}
 
