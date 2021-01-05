@@ -132,7 +132,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 	let skrypt = document.querySelectorAll('script[src="https://probloggerplugins.github.io/widgets/favorite-posts.js"]')[nr];
 	
 	let icon = skrypt.getAttribute('icon');
-	if (icon !== 'star') icon = 'heart';
+	if (icon !== 'star' && icon !== 'thumb') icon = 'heart';
 	
 	let iconSize = Number(skrypt.getAttribute('iconSize'));
 	if (iconSize < 8 || isNaN(iconSize)) iconSize = 20;
