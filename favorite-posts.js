@@ -109,6 +109,7 @@ var pbpFavPostsCnt = typeof pbpFavPostsCnt == 'undefined' ? 0 : pbpFavPostsCnt +
 		
 	let sel = ['.post', '.post-outer', 'article', '.item', '.blog-post', '.hentry', '.index-post'];
 	let sel2 = ['.post-title', 'h1', 'h2', 'h3'];
+	let selMain = ['#main', 'Blog1', 'Blog00'];
 	
 	let skrypt = document.querySelectorAll('script[src="https://probloggerplugins.github.io/widgets/favorite-posts.js"]')[nr];
 	
@@ -314,7 +315,10 @@ a.pbpReadMore:hover svg {height:15px;padding:0;}
 	}
 	
 	function wal() {
-		let majn = document.querySelector('#main');
+		let majn = document.body;
+		selMain.forEach(s => {
+			if (document.querySelector(s)) majn = document.querySelector(s);
+		});
 		for (let s=0; s<sel.length; s++) {
 			if (majn.querySelector(sel[s])) {
 				let posty = majn.querySelectorAll(sel[s]);
